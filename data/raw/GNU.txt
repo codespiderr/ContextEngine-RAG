@@ -1,0 +1,56 @@
+Title: GNU
+Category_Context: RAG Dataset
+
+GNU (  GNOO) is an extensive collection of free software (387 packages as of June 2025), which can be used as an operating system or can be used in parts with other operating systems. Most of GNU is licensed under the GNU Project's own General Public License (GPL).
+
+GNU is also the project within which the free software concept originated. Richard Stallman, the founder of the project, views GNU as a "technical means to a social end". Relatedly, Lawrence Lessig states in his introduction to the second edition of Stallman's book Free Software, Free Society that in it Stallman has written about "the social aspects of software and how Free Software can create community and social justice".
+
+Name
+GNU is a recursive acronym for "GNU's Not Unix!", chosen because GNU's design is Unix-like, but differs from Unix by being free software and containing no Unix code. Stallman chose the name by using various plays on words, including the song "The Gnu".
+
+History
+Before the 1980s there existed a widespread practice of sharing software in ways similar to what is now considered free software where the participants are free to share copies of the software. Richard Stallman was a part of a group of developers at the MIT Artificial Intelligence Laboratory working on the Incompatible Timesharing System, an operating system which was effectively developed as what is now seen as free software. This community soon fell to ruin however as the PDP-10 platform which the operating system was developed for was discontinued. According to Stallman, what prompted him to start the GNU Project was having previously had an experience with Xerox refusing to give him access to the source code of a laser printer used at the MIT Lab, now with the realization that this community of sharing software would end and noticing the advancing spread of proprietary software which had undone the culture of sharing software that had previously existed, Richard Stallman refused to adapt by continuing with proprietary software, and he instead decided that with this skills as an operating systems programmer, he would begin the development of a new free software operating system and to recreate a community of sharing software that was lost, called GNU.
+Development of the GNU software was initiated by Richard Stallman while he worked at the MIT Artificial Intelligence Laboratory. It was called the GNU Project, and was publicly announced on September 27, 1983, on the net.unix-wizards and net.usoft newsgroups by Stallman. Software development began on January 5, 1984, when Stallman quit his job at the Lab so that they could not claim ownership or interfere with distributing GNU components as free software.
+The goal was to bring a completely free software operating system into existence. Stallman wanted computer users to be free to study the source code of the software they use, share software with other people, modify the behavior of software, and publish their modified versions of the software. This philosophy was published as the GNU Manifesto in March 1985.
+Richard Stallman's experience with the Incompatible Timesharing System (ITS), an early operating system written in assembly language that became obsolete due to discontinuation of PDP-10, the computer architecture for which ITS was written, led to a decision that a portable system was necessary. It was thus decided that the development would be started using C and Lisp as system programming languages, and that GNU would be compatible with Unix. At the time, Unix was already a popular proprietary operating system. The design of Unix was modular, so it could be reimplemented piece by piece.
+Much of the needed software had to be written from scratch, but existing compatible third-party free software components were also used such as the TeX typesetting system, the X Window System, and the Mach microkernel that forms the basis of the GNU Mach core of GNU Hurd (the official kernel of GNU). With the exception of the aforementioned third-party components, most of GNU has been written by volunteers; some in their spare time, some paid by companies, educational institutions, and other non-profit organizations. In October 1985, Stallman set up the Free Software Foundation (FSF). In the late 1980s and 1990s, the FSF hired software developers to write the software needed for GNU.
+As GNU gained prominence, interested businesses began contributing to development or selling GNU software and technical support. The most prominent and successful of these was Cygnus Solutions, now part of Red Hat.
+
+Components
+The system's basic components include the GNU Compiler Collection (GCC), the GNU C library (glibc), and GNU Core Utilities (coreutils), but also the GNU Debugger (GDB), GNU Binary Utilities (binutils), and the GNU Bash shell. GNU developers have contributed to Linux ports of GNU applications and utilities, which are now also widely used on other operating systems such as BSD variants, Solaris and macOS.
+Many GNU programs have been ported to other operating systems, including proprietary platforms such as Microsoft Windows and macOS. GNU programs have been shown to be more reliable than their proprietary Unix counterparts.
+As of June 2024, there are a total of 467 GNU packages (including decommissioned, 394 excluding) hosted on the official GNU development site.
+
+GNU as an operating system
+The original kernel of GNU Project is the GNU Hurd (together with the GNU Mach microkernel), which was the original focus of the Free Software Foundation (FSF). With the April 30, 2015 release of the Debian GNU/Hurd 2015 distribution, GNU now provides all required components to assemble an operating system that users can install and use on a computer. However, the Hurd kernel is not yet considered production-ready but rather a base for further development and non-critical application usage.
+
+Non-GNU kernels
+Because of the development status of Hurd, GNU is usually paired with other kernels such as Linux or FreeBSD. A stable version (or variant) of GNU can be run by combining the GNU packages with the Linux kernel, making a functional Unix-like system. The GNU Project calls this GNU/Linux, and the defining features are the combination of:
+
+GNU packages (except for GNU Hurd)  The GNU packages consist of numerous operating system tools and utilities (shell, coreutils, compilers, libraries, etc.) including a library implementation of all of the functions specified in POSIX System Application Program Interface (POSIX.1). The GCC compiler can generate machine-code for a large variety of computer-architectures.
+Linux kernel – this implements program scheduling, multitasking, device drivers, memory management, etc. and allows the system to run on a large variety of computer-architectures. Linus Torvalds released the Linux kernel under the GNU General Public License in 1992; it is however not part of the GNU Project.
+non-GNU programs – various free software packages which are not a part of the GNU Project but are released under the GNU General Public License or another FSF-approved Free Software License.
+Most Linux distributions combine GNU packages with a Linux kernel which contains proprietary binary blobs. In 2012, a fork of the Linux kernel became officially part of the GNU Project in the form of Linux-libre, a variant of Linux with all proprietary components removed.
+The GNU Project has endorsed Linux-libre distributions, such as Trisquel, Parabola GNU/Linux-libre, PureOS and GNU Guix System.
+
+GNU/Linux naming controversy
+Whether the combination of GNU libraries with external kernels is a GNU operating system with a kernel (e.g. GNU with Linux), because the GNU collection renders the kernel into a usable operating system as understood in modern software development, or whether the kernel is an operating system unto itself with a GNU layer on top (i.e. Linux with GNU), because the kernel can operate a machine without GNU, is a matter of ongoing debate. The FSF maintains that an operating system built using the Linux kernel and GNU tools and utilities should be considered a variant of GNU, and promotes the term GNU/Linux for such systems (leading to the GNU/Linux naming controversy). This view is not exclusive to the FSF. Notably, Debian, one of the biggest and oldest Linux distributions, refers to itself as Debian GNU/Linux.
+
+Logo
+The logo for GNU is a gnu head. Originally drawn by Etienne Suvasa, a bolder and simpler version designed by Aurelio Heckert is now preferred. It appears in GNU software and in printed and electronic documentation for the GNU Project, and is also used in Free Software Foundation materials.
+
+There was also a modified version of the official logo. It was created by the Free Software Foundation in September 2013 in order to commemorate the 30th anniversary of the GNU Project.
+
+See also
+Free software movement
+History of free and open-source software
+List of computing mascots
+Category:Computing mascots
+
+References
+External links
+
+Official website 
+The GNU Project web server, prep.ai.mit.edu at the Wayback Machine (archived 2000-10-25)
+unxutils.sourceforge.net, Ports of GNU utilities for Microsoft Windows
+www.verbumvanum.org/pesalus, The daemon, the GNU and the penguin at the Wayback Machine (archived 2017-06-29)
