@@ -2,7 +2,7 @@ import os
 import wikipediaapi
 import time
 
-def download_data(topics_list,dir="data/raw"):
+def download_data(topics_list,dir="data/cleaned"):
     os.makedirs(dir, exist_ok=True)
     print("started dowload of ",len(topics_list), "pages")
 

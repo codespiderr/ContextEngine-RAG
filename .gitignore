@@ -1,1 +1,4 @@
 src/tester.py
+.env
+data/
+venv/
