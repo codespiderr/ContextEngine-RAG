@@ -18,11 +18,15 @@ def download_data(topics_list,dir="data/cleaned"):
             
         safe_filename = page_title.replace(" ", "_").replace("/", "-") + ".txt"
         file_path = os.path.join(dir, safe_filename)
-        
+        truncated_content = page.text
+        if "see also" in page.text or "See also" in page.text:
+        # Keeps only the text strictly before the phrase
+            truncated_content = page.text.split("See also", 1)[0]
+
         with open(file_path, "w", encoding="utf-8") as f:
             f.write(f"Title: {page.title}\n")
             f.write(f"Category_Context: RAG Dataset\n\n")
-            f.write(page.text)
+            f.write(truncated_content)
             
         print(f"Saved: {page_title}")
 
