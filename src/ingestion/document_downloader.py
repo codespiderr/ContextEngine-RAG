@@ -1,12 +1,13 @@
 import os
 import wikipediaapi
 import time
+from bs4 import BeautifulSoup as soup
 
 def download_data(topics_list,dir="data/cleaned"):
     os.makedirs(dir, exist_ok=True)
     print("started dowload of ",len(topics_list), "pages")
 
-    wiki = wikipediaapi.Wikipedia(user_agent='CONTEXTENGINE-RAG', language='en')
+    wiki = wikipediaapi.Wikipedia(user_agent='CONTEXTENGINE-RAG', language='en',extract_format=wikipediaapi.ExtractFormat.HTML)
 
     for page_title in topics_list:
         time.sleep(1.0)
@@ -18,15 +19,22 @@ def download_data(topics_list,dir="data/cleaned"):
             
         safe_filename = page_title.replace(" ", "_").replace("/", "-") + ".txt"
         file_path = os.path.join(dir, safe_filename)
+
+        t = soup(page.text,'html.parser')
+        #clean_text = t.get_text(separator=" ", strip=True)
+
         truncated_content = page.text
         if "see also" in page.text or "See also" in page.text:
         # Keeps only the text strictly before the phrase
             truncated_content = page.text.split("See also", 1)[0]
+        # Keeps only the text strictly before the phrase
+            truncated_content = truncated_content.split("Further reading", 1)[0]
+
 
         with open(file_path, "w", encoding="utf-8") as f:
             f.write(f"Title: {page.title}\n")
             f.write(f"Category_Context: RAG Dataset\n\n")
-            f.write(truncated_content)
+            f.write(t.get_text())
             
         print(f"Saved: {page_title}")
 
