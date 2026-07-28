@@ -48,8 +48,8 @@ def download_data(topics_list,dir="data/cleaned"):
 
 if __name__ == "__main__":
 
-    data = ["Information theory"]
-    data1 = [
+    data_test = ["Information theory"]
+    data = [
     "Alan Turing", "Ada Lovelace", "Charles Babbage", "Analytical Engine",
     "Von Neumann architecture", "John von Neumann", "ENIAC", "Claude Shannon",
     "Information theory", "Difference engine", "Gottfried Wilhelm Leibniz",
