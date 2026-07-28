@@ -21,12 +21,15 @@ def download_data(topics_list,dir="data/cleaned"):
         file_path = os.path.join(dir, safe_filename)
 
         t = soup(page.text,'html.parser')
-        #clean_text = t.get_text(separator=" ", strip=True)
+        for math_tag in t.find_all("math"):
+            math_tag.decompose()
+        clean_text = t.get_text()     
 
-        truncated_content = page.text
-        if "see also" in page.text or "See also" in page.text:
+        
+        truncated_content = clean_text
+        if "see also" in clean_text or "See also" in clean_text:
         # Keeps only the text strictly before the phrase
-            truncated_content = page.text.split("See also", 1)[0]
+            truncated_content = clean_text.split("See also", 1)[0]
         # Keeps only the text strictly before the phrase
             truncated_content = truncated_content.split("Further reading", 1)[0]
 
@@ -34,13 +37,14 @@ def download_data(topics_list,dir="data/cleaned"):
         with open(file_path, "w", encoding="utf-8") as f:
             f.write(f"Title: {page.title}\n")
             f.write(f"Category_Context: RAG Dataset\n\n")
-            f.write(t.get_text())
+            f.write(truncated_content)
             
         print(f"Saved: {page_title}")
 
 if __name__ == "__main__":
 
-    data = [
+    data = ["Information theory"]
+    data1 = [
     "Alan Turing", "Ada Lovelace", "Charles Babbage", "Analytical Engine",
     "Von Neumann architecture", "John von Neumann", "ENIAC", "Claude Shannon",
     "Information theory", "Difference engine", "Gottfried Wilhelm Leibniz",
