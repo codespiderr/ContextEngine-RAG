@@ -30,7 +30,7 @@ def chunker():
                     tokens += len(text1.split())
                     if text1 == "":
                         break
-                    if tokens>192:
+                    if tokens>132:
                         print("writing line to temp",chunk_number)
                         temp.write(text1)
                     c.write(text1)

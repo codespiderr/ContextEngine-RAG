@@ -1,6 +1,7 @@
 import os
 import wikipediaapi
 import time
+import textwrap
 from bs4 import BeautifulSoup as soup
 
 def download_data(topics_list,dir="data/cleaned"):
@@ -25,6 +26,10 @@ def download_data(topics_list,dir="data/cleaned"):
             math_tag.decompose()
         clean_text = t.get_text()     
 
+        #wrappinig the text to make it more easy to chunk and read
+        paragraphs = clean_text.split("\n\n")
+        wrapped_paragraphs = [textwrap.fill(p, width=100) for p in paragraphs]
+        clean_text = "\n\n".join(wrapped_paragraphs)
         
         truncated_content = clean_text
         if "see also" in clean_text or "See also" in clean_text:
