@@ -11,32 +11,34 @@ def chunker():
 
         with open(item.resolve(),'r',encoding="utf-8") as f:
             not_end = True
+            title = f.readline()
+            context = f.readline()
             while not_end:
-                title = f.readline()
-                context = f.readline()
-                
                 #with open(chunk_path+"chunk"+str(chunk_number),"w",encoding="utf-8") as c:
                 tokens = 0
                 c = open(chunk_path+"chunk"+str(chunk_number),"x",encoding="utf-8")
-                temp = open(chunk_path+"temp","r+",encoding="utf-8",errors="ignore")
-                #c.write("Title: "+title)
-                #c.write("Context: "+context)
-                #c.write("chunk number: "+str(chunk_number))
-                c.write(carryover)
-                c.write("/n")
-                c.write("Carry Over complete")
+                temp = open(chunk_path+"temp","a+",encoding="utf-8",errors="ignore")
+                c.write("Title: "+title)
+                c.write("Context: "+context)
+                c.write("chunk number: "+str(chunk_number)+"\n")
+                c.write(carryover+"\n")  
+
                 while tokens<256:
                     text1 = f.readline()
                     tokens += len(text1.split())
                     if text1 == "":
                         break
-                    if tokens>132:
+                    if tokens>192:
                         print("writing line to temp",chunk_number)
                         temp.write(text1)
                     c.write(text1)
                     temp.seek(0)
                 carryover = temp.read()
                 chunk_number+=1
+                #cleaning up temp file from previous carryover
+                temp.seek(0)
+                temp.truncate()
+
                 temp.close()
                 c.close()
 
