@@ -2,15 +2,23 @@ from sentence_transformers import SentenceTransformer
 from pathlib import Path
 
 model = SentenceTransformer("BAAI/bge-base-en-v1.5")
-path = Path("data/cleaned")
-sentences = [
-    "The weather is lovely today.",
-    "It's so sunny outside!",
-    "He drove to the stadium.",
-    "It's hot outside",
-    "The football match is here"
-]
-embeddings = model.encode(sentences,normalize_embeddings=True)
 
-similarities = model.similarity(embeddings, embeddings)
-print(similarities)
+def embed_chunks():
+    path = Path("data/chunks")
+    chunks = []
+
+    for item in path.iterdir():
+        with open(item.resolve(),'r',encoding="utf-8") as f:
+            text = f.read()
+            chunks.append({
+                "name": item.name,
+                "text": text
+            })
+
+    #adding vector to each individual chunk dict entry
+    for i in chunks:
+        embeddings = model.encode(i["text"],normalize_embeddings=True)
+        i["vector"] = embeddings
+
+def embed_query(query):
+    query_embed = model.encode_query(query,normalize_embeddings=True)
