@@ -15,10 +15,17 @@ def embed_chunks():
                 "text": text
             })
 
-    #adding vector to each individual chunk dict entry
-    for i in chunks:
-        embeddings = model.encode(i["text"],normalize_embeddings=True)
-        i["vector"] = embeddings
+    texts = [c["text"] for c in chunks]
+    embeddings = model.encode(texts, normalize_embeddings=True)
 
+    for chunk, vector in zip(chunks, embeddings):
+        chunk["vector"] = vector
+
+    return chunks
 def embed_query(query):
     query_embed = model.encode_query(query,normalize_embeddings=True)
+    return query_embed
+chunks = embed_chunks()
+
+print(f"Embedded {len(chunks)} chunks")
+print(chunks[0]["name"], chunks[0]["vector"].shape)
