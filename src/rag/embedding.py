@@ -1,5 +1,7 @@
 from sentence_transformers import SentenceTransformer
 from pathlib import Path
+import numpy as np
+import joblib
 
 model = SentenceTransformer("BAAI/bge-base-en-v1.5",device="cuda")
 
@@ -17,20 +19,12 @@ def embed_chunks():
 
     texts = [c["text"] for c in chunks]
     embeddings = model.encode(texts, normalize_embeddings=True)
-    print(embeddings.device)
-    for chunk, vector in zip(chunks, embeddings):
-        chunk["vector"] = vector
-
+    for c in range(len(chunks)):
+        chunks[c]["vector"] = embeddings[c]
     return chunks
-def embed_query(query):
-    query_embed = model.encode_query(query,normalize_embeddings=True)
-    return query_embed
-chunks = embed_chunks()
 
-print(f"Embedded {len(chunks)} chunks")
-print(chunks[0]["name"], chunks[0]["vector"].shape)
+def save_chunks():
+    chunks = embed_chunks()
+    joblib.dump(chunks,r"data/embeddings/vectordata.joblib")
 
-q = input("What is your query")
-q = embed_query(q)
-
-print(q)
+save_chunks()

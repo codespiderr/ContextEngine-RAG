@@ -14,7 +14,6 @@ def chunker():
             title = f.readline()
             context = f.readline()
             while not_end:
-                #with open(chunk_path+"chunk"+str(chunk_number),"w",encoding="utf-8") as c:
                 tokens = 0
                 c = open(chunk_path+"chunk"+str(chunk_number),"x",encoding="utf-8")
                 temp = open(chunk_path+"temp","a+",encoding="utf-8",errors="ignore")
