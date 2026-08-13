@@ -1,7 +1,7 @@
 from sentence_transformers import SentenceTransformer
 from pathlib import Path
 
-model = SentenceTransformer("BAAI/bge-base-en-v1.5")
+model = SentenceTransformer("BAAI/bge-base-en-v1.5",device="cuda")
 
 def embed_chunks():
     path = Path("data/chunks")
@@ -17,7 +17,7 @@ def embed_chunks():
 
     texts = [c["text"] for c in chunks]
     embeddings = model.encode(texts, normalize_embeddings=True)
-
+    print(embeddings.device)
     for chunk, vector in zip(chunks, embeddings):
         chunk["vector"] = vector
 
@@ -29,3 +29,8 @@ chunks = embed_chunks()
 
 print(f"Embedded {len(chunks)} chunks")
 print(chunks[0]["name"], chunks[0]["vector"].shape)
+
+q = input("What is your query")
+q = embed_query(q)
+
+print(q)
