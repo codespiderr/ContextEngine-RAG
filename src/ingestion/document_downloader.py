@@ -82,7 +82,7 @@ if __name__ == "__main__":
     "Retrieval-augmented generation", "Reinforcement learning from human feedback",
     "Recurrent neural network", "Long short-term memory", "Natural language processing",
     "Artificial general intelligence", "Computing power", "Graphics processing unit",
-    "Nvidia", "AI safety", "Hallucination (artificial intelligence)"
+    "Nvidia", "AI safety", "Hallucination (artificial intelligence)","Chicken Biryani"
     ]
     
     download_data(data)
